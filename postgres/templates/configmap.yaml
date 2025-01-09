@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-postgres-config
+data:
+  postgresql.conf: |
+    # PostgreSQL configuration goes here

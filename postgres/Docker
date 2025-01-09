@@ -1,0 +1,17 @@
+# Use the official PostgreSQL image from Docker Hub
+FROM postgres:latest
+
+# Set environment variables (you can customize the user, password, and database name)
+ENV POSTGRES_USER=myuser
+ENV POSTGRES_PASSWORD=mypassword
+ENV POSTGRES_DB=mydatabase
+
+# Copy a custom PostgreSQL configuration file (if you have one)
+# Ensure you have a 'postgresql.conf' in the same directory as the Dockerfile
+COPY ./postgresql.conf /etc/postgresql/postgresql.conf.sample
+
+# Expose the PostgreSQL default port
+EXPOSE 5432
+
+# Run PostgreSQL with custom configuration (if applicable)
+CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf.sample"]
